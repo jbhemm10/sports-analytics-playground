@@ -9,6 +9,7 @@ library(ggplot2)
 library(readxl)
 library(readr)
 
+
 #Set working directory
 setwd("~/Sports Analytics Playground/sports-analytics-playground")
 
@@ -108,4 +109,20 @@ cor(sp_2020$win, sp_2020$p_ip)
 cor(sp_2010$win, sp_2010$p_ip)
 cor(sp_2000$win, sp_2000$p_ip)
 
+#Histogram of wins based on number of innings pitched
+sp_2020$p_ipf <- as.factor(sp_2020$p_ip)
+ggplot(data = sp_2020, aes(x = p_ipf, y = sum(win)))+
+  geom_bar(stat = "identity", color = "skyblue") +
+  labs(title = "Wins by Innings Pitched", x = "Innings Pitched", y = "Number of Wins")
 
+sp_2010$p_ipf <- as.factor(sp_2010$p_ip)
+ggplot(data = sp_2010, aes(x = p_ipf, y = sum(win)))+
+  geom_bar(stat = "identity", color = "orange") +
+  labs(title = "Wins by Innings Pitched", x = "Innings Pitched", y = "Number of Wins") +
+  theme_minimal()
+
+sp_2000$p_ipf <- as.factor(sp_2000$p_ip)
+ggplot(data = sp_2000, aes(x = p_ipf, y = sum(win)))+
+  geom_bar(stat = "identity", color = "purple") +
+  labs(title = "Wins by Innings Pitched", x = "Innings Pitched", y = "Number of Wins") +
+  theme_minimal()
